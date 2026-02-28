@@ -13,7 +13,7 @@ provider "aws" {
 
  resource "aws_instance" "FCT" {
   ami = "ami-051a31ab2f4d498f5"
-  for_each = tomap(["Jump-server","Application-server","DB-server"])
+  for_each = toset(["Jump-server","Application-server","DB-server"])
   instance_type = "t3.micro"
   tags = {
     Name = each.key
